@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
@@ -8,22 +8,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="styles/nav.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/header.css" type="text/css"/> 
+    <link rel="stylesheet" href="styles/new-tweet.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/tweet.css" type="text/css"/>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-  </head>
+    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
+    <!-- Custom CSS -->
+    <style>
+    </style>
+</head>
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
       <span>tweeter</span>
-    </nav>
+      <span>Write a new tweet<i class="fas fa-angle-double-down"></i></span>
+  </nav>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container"></main>
-  </body>
+  <div class="header">
+    <div class="background-block"></div>
+    
+    <div class="avatar">
+      <img src="images/profile-hex.png"> 
+    </div>
+    <div class="name">
+      <h2>Ahmad Ameen</h2>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="new-tweet">
+      <form action="/tweets" method="POST">
+        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <div>
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+        <div class="error-message" style="display: none;"> </div>
+      </form>
+    </section>
+
+    <section id="tweets-container">
+      
+      <!-- <article class="tweet">
+        <header class="tweet-header">
+          <div class="user-profile">
+            <img class="user-icon"></img> 
+          </div>
+          <div>
+            <h4 class="user-handle">
+          </div>
+        </header>
+        <div class="tweet-text">
+        </div>
+        <footer class="tweet-footer">
+          <div class="tweet-response">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+        </footer>
+      </article> -->
+
+    </section>
+  </main>
+</body>
 </html>
