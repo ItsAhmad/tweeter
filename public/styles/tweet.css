@@ -1,0 +1,85 @@
+#tweets-container {
+  width: 90%;
+  display:flex;
+  background-color:#f4f1ec;
+  font-family: sans-serif;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.tweet {
+  width: 90%;
+  display: flex;
+  background-color: #f4f1ec;
+  font-family: sans-serif;
+  flex-direction: column;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tweet header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.tweet header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.tweet header p {
+  margin: 5px 0 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.tweet p {
+  margin-top: 10px;
+  color: #888;
+}
+
+
+.tweet footer {
+  margin-top: 10px;
+}
+
+.tweet footer .tweet-response .icon {
+  margin-right: 10px;
+  cursor: pointer;
+  color: #888;
+}
+
+.tweet .tweet-response #flag:hover {
+  color: #4056A1;
+}
+
+.tweet .tweet-response #heart:hover {
+  color: red
+}
+
+.tweet .tweet-response #retweet:hover {
+  color: green
+}
+
+.tweet:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.error-message {
+  display: none; 
+  color: #ff0000; 
+  font-weight: bold; 
+  margin-top: 10px;
+}
+
+
+@media (max-width: 1024px) {
+  .container {
+    margin-top: 120px; /* Add margin to container to make space for header */
+  }
+}
