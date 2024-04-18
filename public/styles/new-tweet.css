@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+.new-tweet {
+  width: 100%; 
+  margin: 0 auto; 
+  border-bottom: 1px solid #4056A1;
+  padding: 20px;
+  margin-top: 200px;
+}
+
+.new-tweet textarea {
+  border: none; 
+  border-bottom: 10px solid #4056A1; 
+  background-color: transparent; 
+  padding: 5px; 
+  width: 100%; 
+  resize: none; 
+  outline: none; 
+}
+
+
+.new-tweet textarea:focus {
+  border-bottom-color: #e0280b; 
+}
+
+.new-tweet button {
+  background-color: #4056A1; 
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Bungee', cursive;
+}
+
+.counter {
+  float: right; 
+  color: #4056A1; 
+  font-family: 'Bungee', cursive;
+}
