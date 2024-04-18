@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+
+nav {
+  height: 120px;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: 'Bungee', cursive;
+  padding: 0 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0; 
+  width: 100%; 
+  z-index: 1000; 
+  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+  background-color: #020042;
+}
+
+nav .fas.fa-angle-double-down {
+  margin-left: 10px; 
+  color:crimson;
+}
+
+nav span {
+  font-family: 'Bungee', cursive; 
+}
+
+@media (max-width: 1024px) {
+  nav {
+    height: auto;
+    background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+    background-color: #020042;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 0;
+  }
+
+  .avatar {
+    /* Adjust styles for avatar */
+    margin-top: 10px; /* Example margin */
+    /* Add any other necessary styling */
+  }
+}
