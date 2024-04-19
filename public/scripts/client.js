@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+$("#error-emptyMessage").hide();
+$("#error-lengthMessage").hide();
+
   const loadTweets = function() {
     $.ajax({
       url: '/tweets', 
@@ -52,16 +55,27 @@ $(document).ready(function() {
 
   loadTweets();
 
-  $("#new-tweet-form").submit(function(event) {
+$("#new-tweet-form").submit(function(event) {
     event.preventDefault();
+    const maxChar = 140;
+    const inputLength = $(this).find("#tweet-text").val().length;
   
-    const newTweet = $(this).serialize();
+    $("#error-emptyMessage").slideUp("slow");
+    $("#error-lengthMessage").slideUp("slow");
 
-    $.post("/tweets/", newTweet, () => {
-
-      loadTweets();
-  
-      location.reload();
-    }); 
+    if (!inputLength) {
+      $("#error-emptyMessage").slideDown("slow");
+      $("#error-message-tooLong").hide();
+    } else if (inputLength - maxChar > 0) {
+      $("#error-lengthMessage").slideDown("slow");
+      $("#error-emptyMessage").hide();
+    } else {
+      const newTweet = $(this).serialize();
+      $.post("/tweets/", newTweet, () => {
+        $(this).find("#tweet-text").val("");
+        $(this).find(".counter").val(maxChar);
+        loadTweets();
+      });
+    }
   });
 });
