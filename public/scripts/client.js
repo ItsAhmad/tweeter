@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   const loadTweets = function() {
     $.ajax({
-      url: 'http://localhost:8080/tweets', 
+      url: '/tweets', 
       method: 'GET',
       dataType: 'json',
       success: function(tweets) {
