@@ -37,3 +37,23 @@
   color: #4056A1; 
   font-family: 'Bungee', cursive;
 }
+
+.error-message-box {
+    display: flex;
+    border: 3px solid red;
+    color: red;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+    font-size: 20px;
+    font-family: sans-serif;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+.fa-exclamation-triangle {
+  margin-left: 5px;
+  margin-right: 5px;
+}
