@@ -1,21 +1,11 @@
-$(document).ready(function() {
 
-  $("#error-emptyMessage").hide();
-  $("#error-lengthMessage").hide();
-
-  const loadTweets = function() {
-    $.ajax({
-      url: '/tweets', 
-      method: 'GET',
-      dataType: 'json',
-      success: function(tweets) {
-        renderTweets(tweets.reverse());
-      },
-      error: function(error) {
-        console.error('Error loading tweets:', error);
-      }
-    });
-  };
+//Function to loop through tweets in reverse, calls CreateTweetElement for each tweet
+const renderTweets = function(tweets) {
+  $("#tweets").empty(); // clear the container everytime before appending the tweets
+  for (let i = tweets.length - 1; i >= 0; i--) {
+    $("#the-tweets").append(createTweetElement(tweets[i]));
+  }
+};
 
 
 //Function to generate tweet from the tweet object
