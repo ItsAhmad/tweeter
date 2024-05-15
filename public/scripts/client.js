@@ -79,7 +79,6 @@ $(document).ready(function() {
         })
         .fail((error) => {
           console.error('Error posting tweet:', error);
-          // Display error message to the user here
         });
     }
   });
