@@ -59,6 +59,7 @@ $(document).ready(function() {
   
     const maxChar = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
+    const $counter = $(this).find(".counter");
   
     $("#error-emptyMessage").slideUp("slow");
     $("#error-lengthMessage").slideUp("slow");
@@ -74,12 +75,15 @@ $(document).ready(function() {
       $.post("/tweets/", newTweet)
         .done(() => {
           $(this).find("#tweet-text").val("");
-          $(this).find(".counter").val(maxChar);
+          $counter.val(maxChar);
           loadTweets();
         })
         .fail((error) => {
           console.error('Error posting tweet:', error);
         });
     }
+
+    // Apply red color class to counter when exceeding character limit
+    $counter.toggleClass("red", inputLength > maxChar);
   });
 });
