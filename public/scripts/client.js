@@ -33,17 +33,15 @@ const createTweetElement = function(tweetData) {
   return $tweet;
 };
 
-
-  const renderTweets = function(tweets) {
-    $('#tweets-container').empty(); 
-  
-    for (let tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet); 
-    }
-  };
-
-  loadTweets();
+//Function to grab tweets from server
+const loadTweets = function() {
+  $.ajax({
+    type: "GET",
+    url: "/tweets",
+    success: (res) => renderTweets(res),
+    error: (err) => console.error(err)
+  });
+};
 
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault(); 
