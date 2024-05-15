@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-$("#error-emptyMessage").hide();
-$("#error-lengthMessage").hide();
+  $("#error-emptyMessage").hide();
+  $("#error-lengthMessage").hide();
 
   const loadTweets = function() {
     $.ajax({
@@ -16,7 +16,6 @@ $("#error-lengthMessage").hide();
       }
     });
   };
-
 
   const createTweetElement = function(tweetData) {
     let $tweet = $(`
@@ -44,7 +43,6 @@ $("#error-lengthMessage").hide();
     return $tweet;
   };
 
-
   const renderTweets = function(tweets) {
     $('#tweets-container').empty(); 
   
@@ -57,7 +55,7 @@ $("#error-lengthMessage").hide();
 
   loadTweets();
 
-$("#new-tweet-form").submit(function(event) {
+  $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const maxChar = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
@@ -73,11 +71,16 @@ $("#new-tweet-form").submit(function(event) {
       $("#error-emptyMessage").hide();
     } else {
       const newTweet = $(this).serialize();
-      $.post("/tweets/", newTweet, () => {
-        $(this).find("#tweet-text").val("");
-        $(this).find(".counter").val(maxChar);
-        loadTweets();
-      });
+      $.post("/tweets/", newTweet)
+        .done(() => {
+          $(this).find("#tweet-text").val("");
+          $(this).find(".counter").val(maxChar);
+          loadTweets();
+        })
+        .fail((error) => {
+          console.error('Error posting tweet:', error);
+          // Display error message to the user here
+        });
     }
   });
 });
