@@ -72,6 +72,10 @@ $(document).ready(function() {
       $("#error-emptyMessage").hide();
     } else {
       const newTweet = $(this).serialize();
+      if (inputLength > maxChar) {
+        // Display error message or handle accordingly
+        return;
+      }
       $.post("/tweets/", newTweet)
         .done(() => {
           $(this).find("#tweet-text").val("");
