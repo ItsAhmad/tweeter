@@ -56,7 +56,8 @@ $(document).ready(function() {
   loadTweets();
 
   $("#new-tweet-form").submit(function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
+  
     const maxChar = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
   
