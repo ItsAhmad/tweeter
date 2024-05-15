@@ -66,6 +66,12 @@
   color: green
 }
 
+.tweet-text {
+  overflow-wrap: break-word; 
+  max-width: 100%; 
+}
+
+
 .tweet:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
