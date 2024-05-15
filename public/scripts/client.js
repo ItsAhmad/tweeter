@@ -48,7 +48,6 @@ $(document).ready(function() {
   
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      console.log($tweet)
       $('#tweets-container').append($tweet); 
     }
   };
@@ -66,8 +65,8 @@ $(document).ready(function() {
 
     if (!inputLength) {
       $("#error-emptyMessage").slideDown("slow");
-      $("#error-message-tooLong").hide();
-    } else if (inputLength - maxChar > 0) {
+      $("#error-lengthMessage").hide();
+    } else if (inputLength > maxChar) {
       $("#error-lengthMessage").slideDown("slow");
       $("#error-emptyMessage").hide();
     } else {
