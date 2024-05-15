@@ -1,63 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-.new-tweet {
-  width: 100%; 
-  margin: 0 auto; 
-  border-bottom: 1px solid #4056A1;
-  padding: 20px;
-  margin-top: 200px;
+section.new-tweet {
+  margin-top: 0.5em;
+  display: none;
 }
 
-.new-tweet textarea {
-  border: none; 
-  border-bottom: 10px solid #4056A1; 
-  background-color: transparent; 
-  padding: 5px; 
-  width: 100%; 
-  resize: none; 
-  outline: none; 
+section.new-tweet label {
+  display: block;
+  color: dimgray;
+  font-weight: bolder;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-
-.new-tweet textarea:focus {
-  border-bottom-color: #e0280b; 
+section.new-tweet div {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-.new-tweet button {
-  background-color: #4056A1; 
-  color: #FFFFFF;
+section.new-tweet button {
+  background-color: #4056A1;
   border: none;
-  padding: 10px 20px;
+  color: #FFFFFF;
+  font-family: "Bungee", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   cursor: pointer;
-  font-family: 'Bungee', cursive;
 }
 
-.counter {
-  float: right; 
-  color: #4056A1; 
-  font-family: 'Bungee', cursive;
+section.new-tweet output {
+  font-weight: 900;
+  font-family: "Bungee", sans-serif;
 }
 
-.error-message-box {
-    display: flex;
-    border: 3px solid red;
-    color: red;
-    padding: 10px;
-    margin-bottom: 15px;
-    margin-top: -10px;
-    font-size: 20px;
-    font-family: sans-serif;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: center;
-  }
+#tweet-text {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 4px solid dimgray;
+  font-size: 20px;
+  font-weight: 550;
+}
 
-.fa-exclamation-triangle {
-  margin-left: 5px;
-  margin-right: 5px;
+#submit {
+  display: flex;
+  justify-content: space-between;
 }
 
 .red {
   color: red;
+}
+
+#error {
+  display: none;
+}
+
+#error-message {
+  display: flex;
+  justify-content: flex-start;
+  border: 4px solid red;
+  padding: 0.5em;
+  margin-bottom: 2em;
+  color: red;
+}
+
+#error-message i {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
