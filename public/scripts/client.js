@@ -43,38 +43,41 @@ const loadTweets = function() {
   });
 };
 
-  $("#new-tweet-form").submit(function(event) {
-    event.preventDefault(); 
-  
-    const maxChar = 140;
-    const inputLength = $(this).find("#tweet-text").val().length;
-    const $counter = $(this).find(".counter");
-  
-    $("#error-emptyMessage").slideUp("slow");
-    $("#error-lengthMessage").slideUp("slow");
 
-    if (!inputLength) {
-      $("#error-emptyMessage").slideDown("slow");
-      $("#error-lengthMessage").hide();
-    } else if (inputLength > maxChar) {
-      $("#error-lengthMessage").slideDown("slow");
-      $("#error-emptyMessage").hide();
-    } else {
-      const newTweet = $(this).serialize();
-      if (inputLength > maxChar) {
+
+$(document).ready(function() {
+  loadTweets();
+
+
+  $("form").submit((event) => {
+    event.preventDefault(); //Prevents automatic refreshing bug 
+
+    // Checks for tweet length, returns error if empty or exceeds 140 Chars.
+    $("#error").slideUp(500, function() {
+      if ($("#tweet-text").val().trim().length === 0) {
+        $("#error span").html("Can't send empty message!");
+        $("#error").slideDown(500);
+        return;
+      } else if ($("#tweet-text").val().length > 140) {
+        $("#error span").html("You've exceeded the 140 character limit!");
+        $("#error").slideDown(500);
         return;
       }
-      $.post("/tweets/", newTweet)
-        .done(() => {
-          $(this).find("#tweet-text").val("");
-          $counter.val(maxChar);
-          loadTweets();
-        })
-        .fail((error) => {
-          console.error('Error posting tweet:', error);
-        });
-    }
 
-    $counter.toggleClass("red", inputLength > maxChar);
+    
+      $.ajax({
+        type: "POST",
+        url: "/tweets/",
+        data: $("form").serialize(),
+        success: () => {
+          loadTweets(); 
+          $("#tweet-text").val("").trigger("input"); 
+        },
+        error: (err) => {
+          console.error(err);
+          $("#error span").html("Send tweet failed!");
+        }
+      });
+    });
   });
 });
