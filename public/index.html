@@ -60,21 +60,26 @@
       </div>
     </header>
 
-  <main class="container">
-    <section class="new-tweet">
-      <form action="/tweets" method="POST">
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-        <div>
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
+<main class="container">
+      <section class="new-tweet">
+        <div id="error" >
+          <div id="error-message">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span></span>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
         </div>
-        <div class="error-message" style="display: none;"> </div>
-      </form>
-    </section>
+        <form action="/tweets/" method="POST">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text"></textarea>
+          <div id="submit">
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
 
-    <section id="tweets-container"></section>
-
-    </section>
-  </main>
+      <section id="the-tweets"></section>
+    </main>
 </body>
 </html>
