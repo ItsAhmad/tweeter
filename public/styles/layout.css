@@ -27,28 +27,13 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- .container {
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
   width: 90%;
-  margin: 0 auto; 
-  background-color: inherit; 
-}
-
-.name h2 {
-  font-family: Arial, sans-serif; 
-  color: white;
-}
-
-@media (max-width: 1024px) {
-  body {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .container {
-    width: 200%;
-    background-color: #f4f1ec;
-    margin-top: 120px;
-    margin-right: 50px;
-    margin-left: 30px;
-  }
+  align-self: center;
 }
