@@ -1,17 +1,19 @@
 $(document).ready(function() {
-  $('.new-tweet textarea').on('input', function() {
-      let $textarea = $(this);
-      let inputValue = $textarea.val();
-      let inputLength = inputValue.length;
-      let charactersLeft = 140 - inputLength;
+  $("#tweet-text").on("input", function() {
+    let count = 140 - $(this).val().length;
+    let output = $(this).parent().find("output.counter");
 
-      let $counter = $('.new-tweet .counter');
-      $counter.text(charactersLeft);
-
-      if (charactersLeft < 0) {
-          $counter.addClass('invalid'); 
-      } else {
-          $counter.removeClass('invalid'); 
+    // Adds "red" class to counter IF character count exceeds 140
+    if (count < 0) {
+      if (!output.hasClass("red")) {
+        output.addClass("red");
       }
+    } else {
+      if (output.hasClass("red")) {
+        output.removeClass("red");
+      }
+    }
+
+    output.val(count);
   });
 });
