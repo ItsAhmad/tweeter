@@ -16,16 +16,7 @@ $("#error-lengthMessage").hide();
       }
     });
   };
-  
-  const renderTweets = function(tweets) {
-    $('#tweets-container').empty(); 
-  
-    for (let tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      console.log($tweet)
-      $('#tweets-container').append($tweet); 
-    }
-  };
+
 
   const createTweetElement = function(tweetData) {
     let $tweet = $(`
@@ -51,6 +42,17 @@ $("#error-lengthMessage").hide();
         </footer>
       </article>`);
     return $tweet;
+  };
+
+
+  const renderTweets = function(tweets) {
+    $('#tweets-container').empty(); 
+  
+    for (let tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      console.log($tweet)
+      $('#tweets-container').append($tweet); 
+    }
   };
 
   loadTweets();
