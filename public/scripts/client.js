@@ -17,31 +17,32 @@ $(document).ready(function() {
     });
   };
 
-  const createTweetElement = function(tweetData) {
-    let $tweet = $(`
-      <article class="tweet">
-        <header class="tweet-header">
-          <div class="user">
-            <img class="user-icon" src="${tweetData.user.avatars}"></img> 
-            <h4 class="user-name">${tweetData.user.name}</h4>
-          </div>
-          <div>
-            <h4 class="user-handle">${tweetData.user.handle}</h4>
-          </div>
-        </header>
-        <div class="tweet-text">
-          ${(tweetData.content.text)}
-        </div>
-        <footer class="tweet-footer">
-          <div class="tweet-response">
-            <i class="fas fa-flag" id="flag"> </i>
-            <i class="fas fa-retweet" id="retweet"> </i>
-            <i class="fas fa-heart" id="heart"> </i>
-          </div>
-        </footer>
-      </article>`);
-    return $tweet;
-  };
+
+//Function to generate tweet from the tweet object
+const createTweetElement = function(tweetData) {
+  let $tweet = $(`
+<article>
+  <header>
+    <div>
+      <img src=${tweetData.user.avatars} alt="profile picture">
+      <span class="name">${tweetData.user.name}</span>
+    </div>
+    <div class="right-div">${tweetData.user.handle}</div>
+  </header>
+  <p>${escape(tweetData.content.text)}</p>
+  <footer>
+    <span>${timeago.format(tweetData.created_at)}</span>
+    <div class="icon">
+      <i class="fa-sharp fa-solid fa-flag"></i>
+      <i class="fa-solid fa-retweet"></i>
+      <i class="fa-sharp fa-solid fa-heart"></i>
+    </div>
+  </footer>
+</article>
+`);
+  return $tweet;
+};
+
 
   const renderTweets = function(tweets) {
     $('#tweets-container').empty(); 
