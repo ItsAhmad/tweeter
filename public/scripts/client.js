@@ -1,14 +1,13 @@
-
-//Function to loop through tweets in reverse, calls CreateTweetElement for each tweet
+// Function to loop through tweets in reverse, calls CreateTweetElement for each tweet
 const renderTweets = function(tweets) {
-  $("#tweets").empty(); // clear the container everytime before appending the tweets
+  console.log("Rendering tweets:", tweets);
+  $("#the-tweets").empty(); // clear the container everytime before appending the tweets
   for (let i = tweets.length - 1; i >= 0; i--) {
     $("#the-tweets").append(createTweetElement(tweets[i]));
   }
 };
 
-
-//Function to generate tweet from the tweet object
+// Function to generate tweet from the tweet object
 const createTweetElement = function(tweetData) {
   let $tweet = $(`
 <article>
@@ -29,28 +28,37 @@ const createTweetElement = function(tweetData) {
     </div>
   </footer>
 </article>
-`);
+  `);
   return $tweet;
 };
 
-//Function to grab tweets from server
+// Escape function to prevent wrongful concatenation
+const escape = function (str) {
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+// Function to grab tweets from server
 const loadTweets = function() {
+  console.log("Loading tweets...");
   $.ajax({
     type: "GET",
     url: "/tweets",
-    success: (res) => renderTweets(res),
-    error: (err) => console.error(err)
+    success: (res) => {
+      console.log("Tweets loaded successfully:", res);
+      renderTweets(res);
+    },
+    error: (err) => console.error("Failed to load tweets:", err)
   });
 };
 
-
-
 $(document).ready(function() {
+  console.log("Document ready");
   loadTweets();
 
-
   $("form").submit((event) => {
-    event.preventDefault(); //Prevents automatic refreshing bug 
+    event.preventDefault(); // Prevents automatic refreshing bug
 
     // Checks for tweet length, returns error if empty or exceeds 140 Chars.
     $("#error").slideUp(500, function() {
@@ -64,17 +72,17 @@ $(document).ready(function() {
         return;
       }
 
-    
       $.ajax({
         type: "POST",
         url: "/tweets/",
         data: $("form").serialize(),
         success: () => {
+          console.log("Tweet posted successfully");
           loadTweets(); 
           $("#tweet-text").val("").trigger("input"); 
         },
         error: (err) => {
-          console.error(err);
+          console.error("Failed to post tweet:", err);
           $("#error span").html("Send tweet failed!");
         }
       });

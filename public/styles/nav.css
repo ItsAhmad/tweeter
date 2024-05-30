@@ -1,19 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-
-
 nav {
   position: fixed;
-  height: 120px;
+  top: 0;
+  left: 0;
+  height: 60px;
   width: 100%;
-  background-color: transparent;
-  color: #FFFFFF;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-bottom: 0.8em;
+  background-color: #ffffff; 
+  color: #000000; 
+  padding: 10px 20px; 
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  z-index: 1000; 
 }
 
 nav button {
